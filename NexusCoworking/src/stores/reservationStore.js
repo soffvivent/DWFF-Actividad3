@@ -57,7 +57,8 @@ export const useReservationStore = defineStore('reservation', () => {
       name: room.name,
       capacity: room.capacity,
       planta: room.planta,
-      precio: room.precio
+      precio: room.precio,
+      image: room.image
     }
 
     console.log('Room selected:', selectedRoom.value)

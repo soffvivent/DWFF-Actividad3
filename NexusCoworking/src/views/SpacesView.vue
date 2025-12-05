@@ -60,7 +60,7 @@
         :class="{ 'selected': isSelected(room.id) }"
       >
         <div class="space-image">
-          <img :src="getRoomImage(room.capacity)" :alt="room.name" />
+          <img :src="room.image" :alt="room.name" />
           <div v-if="isSelected(room.id)" class="selected-badge">✓ Seleccionado</div>
         </div>
 
@@ -164,17 +164,6 @@ function getCapacityLabel(capacity) {
     '9+': '9+ personas'
   }
   return labels[capacity] || capacity
-}
-
-function getRoomImage(capacity) {
-  // Imágenes diferentes según la capacidad
-  const images = {
-    '1': 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=400&fit=crop',
-    '2-4': 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop',
-    '5-8': 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=600&h=400&fit=crop',
-    '9+': 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=400&fit=crop'
-  }
-  return images[capacity] || images['2-4']
 }
 
 function isSelected(roomId) {
