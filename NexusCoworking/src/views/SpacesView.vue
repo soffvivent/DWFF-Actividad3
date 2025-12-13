@@ -116,7 +116,13 @@ const filteredRooms = computed(() => {
   let filtered = rooms.value
 
   if (selectedCapacity.value) {
-    filtered = filtered.filter(room => room.capacity === selectedCapacity.value)
+    if (selectedCapacity.value === '9+') {
+      filtered = filtered.filter(room => room.capacity === '9+')
+    } else if (selectedCapacity.value === '1') {
+      filtered = filtered.filter(room => room.capacity === '1')
+    } else {
+      filtered = filtered.filter(room => room.capacity === selectedCapacity.value)
+    }
   }
 
   if (selectedPlanta.value) {

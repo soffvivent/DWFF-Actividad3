@@ -301,19 +301,19 @@ const validateForm = () => {
     isValid = false
   }
 
-  // Validar fecha
-  if (!formData.value.date) {
-    errors.value.date = 'La fecha es obligatoria'
+// Validar fecha
+if (!formData.value.date) {
+  errors.value.date = 'La fecha es obligatoria'
+  isValid = false
+} else {
+  const selectedDate = new Date(formData.value.date + 'T00:00:00')
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  if (selectedDate < today) {
+    errors.value.date = 'La fecha no puede ser anterior a hoy'
     isValid = false
-  } else {
-    const selectedDate = new Date(formData.value.date)
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    if (selectedDate < today) {
-      errors.value.date = 'La fecha no puede ser anterior a hoy'
-      isValid = false
-    }
   }
+}
 
   // Validar hora
   if (!formData.value.time) {
